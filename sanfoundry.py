@@ -76,13 +76,16 @@ class Sanfoundry(object):
         cd1=os.path.join(cd,"Output")
         os.chdir(cd1)
         files_arr=os.listdir()
+        list_files = [val for val in files_arr if not val.endswith(".pdf")]
         out_f = input('Enter The ouput pdf name: ')
         extension=".pdf"
         out=out_f+extension
-        pdfkit.from_file(files_arr, out)
+        pdfkit.from_file(list_files, out)
         for file in files_arr:
            if file.endswith('.html'):
               os.remove(file)
+           
+        print("============  Check your Output folder  =============")
         
         
     
